@@ -1,7 +1,10 @@
 #include"question.h"
 #include<QDir>
+#include<vector>
+#include<map>
 #include"codec.h"
 std::vector<Question> QuestionList;
+std::map<QString,int> TagsMap;
 void Question::clear(){
 	text.clear(); correction.clear(); answer.clear();
 	notes.clear(); tags.clear();

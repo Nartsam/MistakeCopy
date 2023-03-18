@@ -3,7 +3,6 @@
 GlobalSignal GS;
 
 GlobalSignal::GlobalSignal(QObject *parent)
-	: QObject{parent}
-{
+	: QObject{parent}{
 	
 }

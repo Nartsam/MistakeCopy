@@ -3,7 +3,9 @@
 #include<QFile>
 #include<QFileInfo>
 #include<QMimeData>
+#include<QMessageBox>
 #include<QImageReader>
+#include"globalsignal.h"
 #include"codec.h"
 AddDialog::AddDialog(QWidget *parent) :
 	QDialog(parent),
@@ -64,8 +66,10 @@ void AddDialog::on_buttonBox_accepted(){ //check & save Question
     this->input.set_tags_by_string(ui->lineEdit->text());
 	if(CheckQuestionValidity(this->input)||1){ //debug
 		QuestionList.push_back(this->input);
+		emit GS.AddSignal();
+		QMessageBox::information(this,"提示","添加成功");
 	}
 	else{
-		
+		QMessageBox::critical(this,"错误","输入不合法, 添加失败");
 	}
 }

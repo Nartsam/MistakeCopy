@@ -23,7 +23,6 @@ HEADERS += \
     codec.h \
     globalsignal.h \
     mainwindow.h \
-    message.h \
     mlog.h \
     mtextedit.h \
     question.h \
@@ -38,3 +37,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resource.qrc

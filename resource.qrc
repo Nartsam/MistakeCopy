@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>D:/Nartsam/Pictures/icon/filled-trash.png</file>
+        <file>D:/Nartsam/Pictures/icon/share-3.png</file>
+        <file>D:/Nartsam/Pictures/icon/search.png</file>
+    </qresource>
+</RCC>
