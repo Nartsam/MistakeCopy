@@ -12,6 +12,7 @@ SOURCES += \
     adddialog.cpp \
     codec.cpp \
     globalsignal.cpp \
+    loadingdialog.cpp \
     main.cpp \
     mainwindow.cpp \
     mtextedit.cpp \
@@ -22,8 +23,8 @@ HEADERS += \
     adddialog.h \
     codec.h \
     globalsignal.h \
+    loadingdialog.h \
     mainwindow.h \
-    mlog.h \
     mtextedit.h \
     question.h \
     viewdialog.h

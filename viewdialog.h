@@ -13,7 +13,7 @@ class ViewDialog : public QDialog
 	Q_OBJECT
 	
 public:
-	explicit ViewDialog(QWidget *parent = nullptr);
+	explicit ViewDialog(const QString &append_str,QWidget *parent=nullptr);
 	~ViewDialog();
 	void refresh();
 	void get_result();
@@ -28,6 +28,7 @@ private slots:
 	void on_next_pushButton_clicked();
 	void on_getsim_pushButton_clicked();
 	void on_delete_pushButton_clicked();
+	void on_page_lineEdit_editingFinished();
 	
 private:
 	Ui::ViewDialog *ui;

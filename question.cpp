@@ -1,6 +1,7 @@
 #include"question.h"
 #include<QDir>
 #include<vector>
+#include<iostream>
 #include<map>
 #include"codec.h"
 std::vector<Question> QuestionList;
@@ -59,8 +60,13 @@ QString Question::to_html()const{
     res.append(TITLE_TEXT("改正记录")); res.append(correction);
     res.append(TITLE_TEXT("正确答案")); res.append(answer);
     res.append(TITLE_TEXT("学习笔记")); res.append(notes);
-    res.append(TITLE_TEXT("标签")); for(const auto &i:tags) res.append(i+";");
-    res.append(TITLE_TEXT("创建日期")); res.append(creation_date.toString());
+    res.append(TITLE_TEXT("标签 / 创建日期"));
+	bool isfirst=true;
+	for(const auto &i:tags){
+		if(!isfirst) res.append("; "); isfirst=false;
+		res.append(i);
+	}
+    res.append("  /  "+creation_date.toString());
     return res;
 }
 
@@ -68,7 +74,9 @@ QString Question::to_html()const{
 QString SptorStr("!@#$$==??|;;<~**^#@##;%!");
 void WriteQuestionToFile(const QString &path,const Question &q){
 	QFile data_file(path);
-	data_file.open(QIODevice::Truncate|QIODevice::WriteOnly|QIODevice::Text);
+	if(!data_file.open(QIODevice::Truncate|QIODevice::WriteOnly|QIODevice::Text)){
+		std::cout<<"Error: Write File "<<path.toStdString()<<" Open Failed"<<std::endl;
+	}
 	data_file.write(q.get_text().toUtf8());
 	if(!q.get_text().endsWith('\n')) data_file.write("\n");
 	data_file.write(SptorStr.toUtf8()); data_file.write("\n");
@@ -87,10 +95,16 @@ void WriteQuestionToFile(const QString &path,const Question &q){
 	}
 	data_file.close();
 }
+void RemoveAllFiles(const QDir &dir){
+	QFileInfoList list=dir.entryInfoList(QDir::Files|QDir::NoDotAndDotDot|QDir::Dirs);
+	for(const auto &i:list){
+		if(i.isFile()) QFile(i.absoluteFilePath()).remove();
+	}
+}
 void WriteQuestionListToDir(){
 	QDir data_dir(DataDir);
-	data_dir.removeRecursively(); //del all files
 	if(!data_dir.exists()) data_dir.mkdir(data_dir.absolutePath());
+	RemoveAllFiles(data_dir);
 	int index=0;
 	for(const Question &i:QuestionList){
 		WriteQuestionToFile(DataDir+i.get_filename(++index),i);
@@ -100,7 +114,9 @@ Question ReadQuestionFromFile(const QString &path){
 	QFile data_file(path);
 	QStringList filename_list=data_file.fileName().split('_');
 	Question res(filename_list.last());
-	data_file.open(QIODevice::ReadOnly | QIODevice::Text);
+	if(!data_file.open(QIODevice::ReadOnly | QIODevice::Text)){
+		std::cout<<"Error: Read File "<<path.toStdString()<<" Open Failed"<<std::endl;
+	}
 	QString str(data_file.readLine());
 	while(!str.startsWith(SptorStr)){res.append_text(str);str=data_file.readLine();}
 	str=data_file.readLine();

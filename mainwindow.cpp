@@ -1,8 +1,11 @@
 #include"mainwindow.h"
 #include"ui_mainwindow.h"
+#include<iostream>
+#include<QMessageBox>
 #include"globalsignal.h"
 #include"adddialog.h"
 #include"viewdialog.h"
+//#include"loadingdialog.h"
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 	, ui(new Ui::MainWindow){
@@ -11,9 +14,13 @@ MainWindow::MainWindow(QWidget *parent)
 	setWindowFlags(windowFlags()&~Qt::WindowMaximizeButtonHint);
 	setFixedSize(this->size());
 	button_bonding();
+	ui->search_lineEdit->setPlaceholderText("按题目内容搜索");
+	ui->tags_lineEdit->setPlaceholderText("按标签搜索, 多个标签使用 ';'(半角) 分隔");	
 	connect(&GS,&GlobalSignal::DeleteSignal,this,&::MainWindow::DeleteEvent);
 	connect(&GS,&GlobalSignal::AddSignal,this,&::MainWindow::AddEvent);
 	setup_tags_index();
+	//LoadingDialog *ld=new LoadingDialog(this);
+	//ld->show();
 }
 void MainWindow::button_bonding(){
 	tags_button[0]=ui->pushButton_1; tags_button[1]=ui->pushButton_2;
@@ -40,7 +47,7 @@ void MainWindow::setup_tags_index(){
 	}
 	while(length<6) tags_button[length++]->setVisible(false);
 }
-void MainWindow::AddEvent(){
+void MainWindow::AddEvent(){ //do nothing
 }
 void MainWindow::DeleteEvent(int index){
 	QuestionList.erase(QuestionList.begin()+index);
@@ -49,32 +56,49 @@ void MainWindow::on_add_pushButton_clicked(){
     AddDialog *ad=new AddDialog();
 	ad->show();
 }
+void MainWindow::on_save_pushButton_clicked(){
+	std::cout<<"Info: Write Question List to Dir"<<std::endl;
+    WriteQuestionListToDir();
+}
+void MainWindow::on_about_pushButton_clicked(){
+    QMessageBox::about(this,"Author","Created by MaYiming");
+}
 void MainWindow::on_view_all_pushButton_clicked(){
-    ViewDialog *view=new ViewDialog();
+    ViewDialog *view=new ViewDialog("所有题目");
 	view->setWindowTitle("查看所有题目");
 	view->get_result();
 	view->show();
 }
 void MainWindow::on_str_search_pushButton_clicked(){
-	ViewDialog *view=new ViewDialog();
+	QString str=ui->search_lineEdit->text().trimmed();
+	if(str.isEmpty()){
+		QMessageBox::warning(this,"啊哦","你好像没有输入内容呢");
+		return;
+	}
+	ViewDialog *view=new ViewDialog("\""+str+"\"... 的搜索结果");
 	view->setWindowTitle("按内容搜索");
-	view->get_result(ui->search_lineEdit->text().trimmed());
+	view->get_result(str);
 	view->show();
 }
 void MainWindow::on_tags_search_pushButton_clicked(){
-    QStringList spt=ui->tags_lineEdit->text().split(";");
+	QString str=ui->tags_lineEdit->text().trimmed();
+	if(str.isEmpty()){
+		QMessageBox::warning(this,"啊哦","你好像没有输入内容呢");
+		return;
+	}
+    QStringList spt=str.split(";");
 	QStringList ref;
 	for(const QString &i:spt){
 		if(!i.trimmed().isEmpty()) ref.push_back(i.trimmed());
 	}
-	ViewDialog *view=new ViewDialog();
+	ViewDialog *view=new ViewDialog("\""+str+"\"... 标签的搜索结果");
 	view->setWindowTitle("按标签搜索");
 	view->get_result(ref);
 	view->show();
 }
 void MainWindow::on_tags_button_clicked(int pos)const{
 	--pos;
-	ViewDialog *view=new ViewDialog();
+	ViewDialog *view=new ViewDialog("\""+tags_button[pos]->text()+"\" 标签下的内容");
 	view->setWindowTitle("按标签查看");
 	view->get_result(QStringList(tags_button[pos]->text()));
 	view->show();

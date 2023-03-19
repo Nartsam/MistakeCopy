@@ -36,7 +36,9 @@ public:
 //All Questions stored here
 extern std::vector<Question> QuestionList;
 extern std::map<QString,int> TagsMap;
+
 #define DataDir "data\\"
+
 extern QString SptorStr; //Separator in file
 void WriteQuestionListToDir();
 void ReadQuestionListFromDir();

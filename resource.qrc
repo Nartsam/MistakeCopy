@@ -2,6 +2,9 @@
     <qresource prefix="/">
         <file>D:/Nartsam/Pictures/icon/filled-trash.png</file>
         <file>D:/Nartsam/Pictures/icon/share-3.png</file>
-        <file>D:/Nartsam/Pictures/icon/search.png</file>
+        <file>D:/Nartsam/Pictures/icon/external-knowledge-creative-innovation-mixed-line-solid-yogi-aprelliyanto.png</file>
+        <file>D:/Nartsam/Pictures/icon/icons8-search-30.png</file>
+        <file>D:/Nartsam/Pictures/icon/external-knowledge-online-education-smashingstocks-flat-smashing-stocks-2.png</file>
+        <file>D:/Nartsam/Pictures/GIF/loading.gif</file>
     </qresource>
 </RCC>
