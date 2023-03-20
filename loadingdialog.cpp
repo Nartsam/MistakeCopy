@@ -7,12 +7,12 @@ LoadingDialog::LoadingDialog(QWidget *parent) : QDialog(parent){
     initUi();
 }
 void LoadingDialog::initUi(){
-    this->setFixedSize(250, 250);
+    this->setFixedSize(250,200);
     m_pCenterFrame = new QFrame(this);
     m_pCenterFrame->setGeometry(10, 10 ,230, 230);
     //Loading Movie
-    m_pLoadingMovie = new QMovie(":/loading.gif");
-    m_pLoadingMovie->setScaledSize(QSize(560,420));
+    m_pLoadingMovie = new QMovie(":/resource/loading_2.gif");
+    m_pLoadingMovie->setScaledSize(QSize(100,100));
     m_pMovieLabel = new QLabel(m_pCenterFrame);
     m_pMovieLabel->setGeometry(55, 10, 120, 120);
     m_pMovieLabel->setScaledContents(true);

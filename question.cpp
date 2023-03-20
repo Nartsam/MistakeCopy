@@ -4,6 +4,7 @@
 #include<iostream>
 #include<map>
 #include"codec.h"
+#include"loadingdialog.h"
 std::vector<Question> QuestionList;
 std::map<QString,int> TagsMap;
 void Question::clear(){
@@ -56,17 +57,17 @@ QString Question::get_filename(int index)const{
 }
 QString Question::to_html()const{
 	QString res;
-    res.append(TITLE_TEXT("题目内容")); res.append(text);
-    res.append(TITLE_TEXT("改正记录")); res.append(correction);
-    res.append(TITLE_TEXT("正确答案")); res.append(answer);
-    res.append(TITLE_TEXT("学习笔记")); res.append(notes);
-    res.append(TITLE_TEXT("标签 / 创建日期"));
+    res.append(TITLE_TEXT(">>> 题目内容")); res.append(text);
+    res.append(TITLE_TEXT(">>> 改正记录")); res.append(correction);
+    res.append(TITLE_TEXT(">>> 正确答案")); res.append(answer);
+    res.append(TITLE_TEXT(">>> 学习笔记")); res.append(notes);
+    res.append("<h3>创建日期  /  标签</h3>");
+	res.append(creation_date.toString("yy-MM-dd")+"  /  ");
 	bool isfirst=true;
 	for(const auto &i:tags){
-		if(!isfirst) res.append("; "); isfirst=false;
-		res.append(i);
+		if(!isfirst) res.append("; ");
+		isfirst=false; res.append(i);
 	}
-    res.append("  /  "+creation_date.toString());
     return res;
 }
 
@@ -101,7 +102,11 @@ void RemoveAllFiles(const QDir &dir){
 		if(i.isFile()) QFile(i.absoluteFilePath()).remove();
 	}
 }
+#include<QThread>
 void WriteQuestionListToDir(){
+	LoadingDialog wt; wt.setTipsText("写入数据中...");
+	wt.show();
+	for(long long i=0,j=1e12;i<=j;++i) i=i+2;
 	QDir data_dir(DataDir);
 	if(!data_dir.exists()) data_dir.mkdir(data_dir.absolutePath());
 	RemoveAllFiles(data_dir);
@@ -131,6 +136,8 @@ Question ReadQuestionFromFile(const QString &path){
 	return res;
 }
 void ReadQuestionListFromDir(){
+	LoadingDialog rd; rd.setTipsText("读取数据中...");
+	rd.show();
 	QuestionList.clear();
 	QDir data_dir(DataDir);
 	if(!data_dir.exists()) return;

@@ -5,7 +5,7 @@
 #include"globalsignal.h"
 #include"adddialog.h"
 #include"viewdialog.h"
-//#include"loadingdialog.h"
+#include"codec.h"
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 	, ui(new Ui::MainWindow){
@@ -61,7 +61,15 @@ void MainWindow::on_save_pushButton_clicked(){
     WriteQuestionListToDir();
 }
 void MainWindow::on_about_pushButton_clicked(){
-    QMessageBox::about(this,"Author","Created by MaYiming");
+	QMessageBox *about=new QMessageBox(this);
+	about->setWindowTitle("About Us");
+	about->setText("<h2>MistakeCopy 电子错题本</h2>"
+				   "<b>项目地址: </b>"
+				   "<a href=https://github.com/Nartsam/MistakeCopy>GitHub-Nartsam/MistakeCopy</a>"
+				   "<br/><br/><b>Created by MaYiming</b><br/>"
+				   "版本 V0.1.1");
+	about->setIconPixmap(RoundPixmap(QPixmap(":/resource/nartsam_png.png").scaled(100,100)));
+	about->exec();
 }
 void MainWindow::on_view_all_pushButton_clicked(){
     ViewDialog *view=new ViewDialog("所有题目");

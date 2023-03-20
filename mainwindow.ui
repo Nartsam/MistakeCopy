@@ -242,7 +242,7 @@ QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}</s
     <property name="styleSheet">
      <string notr="true">border-style:none;
 background:transparent;
-border-image: url(:/D:/Nartsam/Pictures/icon/icons8-search-30.png)
+border-image: url(:/resource/icons8-search-30.png)
 </string>
     </property>
     <property name="text">
@@ -261,8 +261,7 @@ border-image: url(:/D:/Nartsam/Pictures/icon/icons8-search-30.png)
     <property name="styleSheet">
      <string notr="true">border-style:none;
 background:transparent;
-border-image: url(:/D:/Nartsam/Pictures/icon/icons8-search-30.png)
-</string>
+border-image: url(:/resource/icons8-search-30.png)</string>
     </property>
     <property name="text">
      <string/>
@@ -282,7 +281,7 @@ border-image: url(:/D:/Nartsam/Pictures/icon/icons8-search-30.png)
       <family>Microsoft YaHei UI</family>
       <pointsize>11</pointsize>
       <italic>false</italic>
-      <bold>false</bold>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -296,9 +295,9 @@ border-image: url(:/D:/Nartsam/Pictures/icon/icons8-search-30.png)
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>390</y>
+      <y>380</y>
       <width>51</width>
-      <height>41</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -312,9 +311,9 @@ border-image: url(:/D:/Nartsam/Pictures/icon/icons8-search-30.png)
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>390</y>
+      <y>380</y>
       <width>51</width>
-      <height>41</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">

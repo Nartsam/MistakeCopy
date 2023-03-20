@@ -1,6 +1,9 @@
 #include"codec.h"
 #include<fstream>
 #include<iostream>
+#include<QBitmap>
+#include<QPainter>
+#include<QPainterPath>
 
 bool mcopy(const QString &src, const QString &dst) {
 	QByteArray b_src=src.toLocal8Bit();
@@ -31,6 +34,31 @@ bool mcopy(const QString &src, const QString &dst) {
     delete[]ch; //release
     infile.close(); outfile.close();
     return true;
+}
+//QPixmap RoundPixmap(const QPixmap &src,int radius){
+//    if(src.isNull()) return QPixmap();
+//	if(radius==-1) radius=src.width()/2;
+//    QSize size(2*radius,2*radius);
+//    QBitmap mask(size); QPainter painter(&mask);
+//    painter.setRenderHint(QPainter::Antialiasing);
+//    painter.setRenderHint(QPainter::SmoothPixmapTransform);
+//    painter.fillRect(0, 0, size.width(), size.height(), Qt::white);
+//    painter.setBrush(QColor(0, 0, 0));
+//    painter.drawRoundedRect(0, 0, size.width(), size.height(), 99, 99);
+//    QPixmap image=src.scaled(size); image.setMask(mask);
+//    return image;
+//}
+QPixmap RoundPixmap(const QPixmap &src,int radius){
+    if(src.isNull()) return QPixmap();
+	if(radius==-1) radius=src.width();
+	QPixmap pixmap(radius,radius);
+	pixmap.fill(Qt::transparent);
+	QPainter painter(&pixmap);
+	painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+	QPainterPath path; path.addEllipse(0, 0, radius, radius);
+	painter.setClipPath(path);
+	painter.drawPixmap(0, 0, radius, radius, src);
+	return pixmap;
 }
 
 
