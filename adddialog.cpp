@@ -4,6 +4,7 @@
 #include<QFileInfo>
 #include<QMimeData>
 #include<QMessageBox>
+#include<QPushButton>
 #include<QImageReader>
 #include"globalsignal.h"
 #include"codec.h"
@@ -14,6 +15,9 @@ AddDialog::AddDialog(QWidget *parent) :
 	setWindowTitle("添加错题");
 	ui->text_radioButton->setChecked(true);
 	current_state=&AddDialog::on_text_radioButton_toggled;
+	QPushButton *default_button=new QPushButton(this);
+	default_button->setGeometry(0,0,0,0);
+	default_button->setDefault(true);
 }
 AddDialog::~AddDialog(){
 	delete ui;

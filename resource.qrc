@@ -1,13 +1,10 @@
 <RCC>
     <qresource prefix="/">
-        <file>resource/android-os.png</file>
-        <file>resource/share-3.png</file>
         <file>resource/icons8-search-30.png</file>
-        <file>resource/external-knowledge-creative-innovation-mixed-line-solid-yogi-aprelliyanto.png</file>
         <file>resource/external-knowledge-online-education-smashingstocks-flat-smashing-stocks-2.png</file>
         <file>resource/filled-trash.png</file>
-        <file>resource/loading.gif</file>
         <file>resource/nartsam_png.png</file>
         <file>resource/loading_2.gif</file>
+        <file>resource/xbox_background.gif</file>
     </qresource>
 </RCC>

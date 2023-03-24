@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>330</width>
-    <height>452</height>
+    <width>576</width>
+    <height>324</height>
    </rect>
   </property>
   <property name="font">
@@ -31,9 +31,9 @@
    <widget class="QLineEdit" name="search_lineEdit">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>20</y>
-      <width>241</width>
+      <x>30</x>
+      <y>60</y>
+      <width>221</width>
       <height>31</height>
      </rect>
     </property>
@@ -52,9 +52,9 @@
    <widget class="QLineEdit" name="tags_lineEdit">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>120</y>
-      <width>241</width>
+      <x>30</x>
+      <y>180</y>
+      <width>221</width>
       <height>31</height>
      </rect>
     </property>
@@ -73,8 +73,8 @@
    <widget class="QPushButton" name="add_pushButton">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>60</y>
+      <x>60</x>
+      <y>110</y>
       <width>171</width>
       <height>51</height>
      </rect>
@@ -99,8 +99,8 @@ QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}</s
    <widget class="QPushButton" name="pushButton_1">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>200</y>
+      <x>330</x>
+      <y>70</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -117,8 +117,8 @@ QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}</s
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>200</y>
+      <x>450</x>
+      <y>70</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -135,8 +135,8 @@ QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}</s
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>250</y>
+      <x>330</x>
+      <y>120</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -153,8 +153,8 @@ QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}</s
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>250</y>
+      <x>450</x>
+      <y>120</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -171,8 +171,8 @@ QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}</s
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>300</y>
+      <x>330</x>
+      <y>170</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -189,8 +189,8 @@ QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}</s
    <widget class="QPushButton" name="pushButton_6">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>300</y>
+      <x>450</x>
+      <y>170</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -207,8 +207,8 @@ QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}</s
    <widget class="QPushButton" name="view_all_pushButton">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>360</y>
+      <x>180</x>
+      <y>240</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -233,8 +233,8 @@ QPushButton:pressed{background-color:rgb(204, 228, 247);border-style: inset;}</s
    <widget class="QPushButton" name="str_search_pushButton">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>20</y>
+      <x>260</x>
+      <y>60</y>
       <width>30</width>
       <height>30</height>
      </rect>
@@ -252,8 +252,8 @@ border-image: url(:/resource/icons8-search-30.png)
    <widget class="QPushButton" name="tags_search_pushButton">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>120</y>
+      <x>260</x>
+      <y>180</y>
       <width>31</width>
       <height>30</height>
      </rect>
@@ -270,16 +270,16 @@ border-image: url(:/resource/icons8-search-30.png)</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>170</y>
-      <width>91</width>
-      <height>17</height>
+      <x>380</x>
+      <y>40</y>
+      <width>111</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Microsoft YaHei UI</family>
-      <pointsize>11</pointsize>
+      <pointsize>12</pointsize>
       <italic>false</italic>
       <bold>true</bold>
      </font>
@@ -295,9 +295,9 @@ border-image: url(:/resource/icons8-search-30.png)</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>380</y>
-      <width>51</width>
-      <height>51</height>
+      <y>260</y>
+      <width>41</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -310,10 +310,10 @@ border-image: url(:/resource/icons8-search-30.png)</string>
    <widget class="QPushButton" name="about_pushButton">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>380</y>
-      <width>51</width>
-      <height>51</height>
+      <x>540</x>
+      <y>260</y>
+      <width>41</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -323,18 +323,63 @@ border-image: url(:/resource/icons8-search-30.png)</string>
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="background_label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>-5</y>
+      <width>590</width>
+      <height>329</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="quit_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>281</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>background_label</zorder>
+   <zorder>str_search_pushButton</zorder>
+   <zorder>pushButton_3</zorder>
+   <zorder>pushButton_5</zorder>
+   <zorder>pushButton_4</zorder>
+   <zorder>tags_search_pushButton</zorder>
+   <zorder>pushButton_2</zorder>
+   <zorder>pushButton_6</zorder>
+   <zorder>quit_pushButton</zorder>
+   <zorder>pushButton_1</zorder>
+   <zorder>tags_lineEdit</zorder>
+   <zorder>add_pushButton</zorder>
+   <zorder>label</zorder>
+   <zorder>search_lineEdit</zorder>
+   <zorder>about_pushButton</zorder>
+   <zorder>save_pushButton</zorder>
+   <zorder>view_all_pushButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>330</width>
+     <width>576</width>
      <height>23</height>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

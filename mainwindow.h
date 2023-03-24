@@ -32,6 +32,8 @@ private slots:
 	void on_save_pushButton_clicked();
 	void on_about_pushButton_clicked();
 	
+	void on_quit_pushButton_clicked();
+	
 private:
 	Ui::MainWindow *ui;
 	QPushButton *tags_button[6];

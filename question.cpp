@@ -1,5 +1,6 @@
 #include"question.h"
 #include<QDir>
+#include<QTextEdit>
 #include<vector>
 #include<iostream>
 #include<map>
@@ -102,11 +103,8 @@ void RemoveAllFiles(const QDir &dir){
 		if(i.isFile()) QFile(i.absoluteFilePath()).remove();
 	}
 }
-#include<QThread>
 void WriteQuestionListToDir(){
-	LoadingDialog wt; wt.setTipsText("写入数据中...");
-	wt.show();
-	for(long long i=0,j=1e12;i<=j;++i) i=i+2;
+	LoadingDialog wt; wt.setTipsText("写入数据中..."); wt.show();
 	QDir data_dir(DataDir);
 	if(!data_dir.exists()) data_dir.mkdir(data_dir.absolutePath());
 	RemoveAllFiles(data_dir);
@@ -136,8 +134,7 @@ Question ReadQuestionFromFile(const QString &path){
 	return res;
 }
 void ReadQuestionListFromDir(){
-	LoadingDialog rd; rd.setTipsText("读取数据中...");
-	rd.show();
+	LoadingDialog rd; rd.setTipsText("读取数据中..."); rd.show();
 	QuestionList.clear();
 	QDir data_dir(DataDir);
 	if(!data_dir.exists()) return;

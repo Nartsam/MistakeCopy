@@ -52,7 +52,7 @@ QString CopyImageToData(const QString &src_url){
 	return dst_path;
 }
 void MTextEdit::dropImage(const QUrl &url, const QImage &image){
-    if (!image.isNull()) {
+    if(!image.isNull()){
 		QTextImageFormat scaled_image;
 		QString new_path=CopyImageToData(url.toString());
 		if(new_path.isEmpty()){
@@ -67,7 +67,7 @@ void MTextEdit::dropImage(const QUrl &url, const QImage &image){
         textCursor().insertImage(scaled_image);
     }
 	else{
-		QMessageBox::warning(this,"啊哦","无法解析这张图片\n虽然不知道为什么, 但这一定不是我们的问题!");
+		QMessageBox::warning(this,"啊哦","无法解析这张图片, 换一张试试吧");
 	}
 }
 void MTextEdit::dropTextFile(const QUrl &url){

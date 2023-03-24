@@ -14,6 +14,9 @@ ViewDialog::ViewDialog(const QString &append_str,QWidget *parent) :
 	ui->page_lineEdit->setValidator(new QIntValidator(ui->page_lineEdit));
 	connect(&GS,&GlobalSignal::DeleteSignal,this,&::ViewDialog::DeleteEvent);
 	connect(&GS,&GlobalSignal::AddSignal,this,&::ViewDialog::AddEvent);
+	QPushButton *default_button=new QPushButton(this);
+	default_button->setGeometry(0,0,0,0);
+	default_button->setDefault(true);
 }
 ViewDialog::~ViewDialog(){
 	delete ui;
@@ -52,11 +55,6 @@ void ViewDialog::refresh(){
 	else ui->prev_pushButton->setEnabled(false);
 	if(current_page<(int)view_index.size()-1) ui->next_pushButton->setEnabled(true);
 	else ui->next_pushButton->setEnabled(false);
-	//cancel focus
-	ui->prev_pushButton->setDefault(false);
-	ui->next_pushButton->setDefault(false);
-	ui->delete_pushButton->setDefault(false);
-	ui->getsim_pushButton->setDefault(false);
 }
 void ViewDialog::DeleteEvent(int index){
 	int del_index=-1;

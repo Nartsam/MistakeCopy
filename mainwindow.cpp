@@ -2,6 +2,7 @@
 #include"ui_mainwindow.h"
 #include<iostream>
 #include<QMessageBox>
+#include<QMovie>
 #include"globalsignal.h"
 #include"adddialog.h"
 #include"viewdialog.h"
@@ -19,8 +20,11 @@ MainWindow::MainWindow(QWidget *parent)
 	connect(&GS,&GlobalSignal::DeleteSignal,this,&::MainWindow::DeleteEvent);
 	connect(&GS,&GlobalSignal::AddSignal,this,&::MainWindow::AddEvent);
 	setup_tags_index();
-	//LoadingDialog *ld=new LoadingDialog(this);
-	//ld->show();
+	QMovie *background=new QMovie(":/resource/xbox_background.gif");
+	//background->setScaledSize(QSize(720,480));
+	background->setScaledSize(ui->background_label->size());
+	ui->background_label->setMovie(background);
+	background->start();
 }
 void MainWindow::button_bonding(){
 	tags_button[0]=ui->pushButton_1; tags_button[1]=ui->pushButton_2;
@@ -57,18 +61,29 @@ void MainWindow::on_add_pushButton_clicked(){
 	ad->show();
 }
 void MainWindow::on_save_pushButton_clicked(){
+	QMessageBox::StandardButton res=QMessageBox::question(this,"提示","手动保存数据?");
+	if(res==QMessageBox::No) return;
 	std::cout<<"Info: Write Question List to Dir"<<std::endl;
     WriteQuestionListToDir();
+}
+void MainWindow::on_quit_pushButton_clicked(){
+	QMessageBox::StandardButton res=QMessageBox::question(this,"提示","不保存修改，直接退出?");
+	if(res==QMessageBox::No) return;
+	ReadQuestionListFromDir();
+	exit(0);
 }
 void MainWindow::on_about_pushButton_clicked(){
 	QMessageBox *about=new QMessageBox(this);
 	about->setWindowTitle("About Us");
-	about->setText("<h2>MistakeCopy 电子错题本</h2>"
-				   "<b>项目地址: </b>"
+	about->setText("<font size='5'><b>MistakeCopy 电子错题本</b></font> 版本 V0.2.1"
+				   "<br/><b>项目地址: </b>"
 				   "<a href=https://github.com/Nartsam/MistakeCopy>GitHub-Nartsam/MistakeCopy</a>"
-				   "<br/><br/><b>Created by MaYiming</b><br/>"
-				   "版本 V0.1.1");
-	about->setIconPixmap(RoundPixmap(QPixmap(":/resource/nartsam_png.png").scaled(100,100)));
+				   "<br/>设计: MaYiming<br/>"
+				   "作者: MaYiming<br/>"
+				   "UI界面: MaYiming<br/>"
+				   "测试: GeChang MaYiming"
+				   "<h3>Developed by MaYiming</h3>");
+	about->setIconPixmap(RoundPixmap(QPixmap(":/resource/nartsam_png.png").scaled(140,140)));
 	about->exec();
 }
 void MainWindow::on_view_all_pushButton_clicked(){

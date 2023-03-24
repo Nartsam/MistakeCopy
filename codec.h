@@ -8,6 +8,7 @@
 
 bool mcopy(const QString &src,const QString &dst);
 QPixmap RoundPixmap(const QPixmap &src,int radius=-1);
+QString to_plain_text(const QString &html);
 QSize ScaledImageSize(int image_width,int image_height,int editor_width,int editor_height);
 bool CheckQuestionValidity(const Question &Q);
 void SearchQuestionByString(const QString &str,std::vector<int> &result_index);
