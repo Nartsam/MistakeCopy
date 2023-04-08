@@ -20,7 +20,7 @@ public:
 	void get_result(const Question &q);
 	void get_result(const QString &str);
 	void get_result(const QStringList &tags);
-
+	
 private slots:
 	void DeleteEvent(int index);
 	void AddEvent();

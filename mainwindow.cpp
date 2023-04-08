@@ -57,14 +57,14 @@ void MainWindow::DeleteEvent(int index){
 	QuestionList.erase(QuestionList.begin()+index);
 }
 void MainWindow::on_add_pushButton_clicked(){
-    AddDialog *ad=new AddDialog();
+	AddDialog *ad=new AddDialog();
 	ad->show();
 }
 void MainWindow::on_save_pushButton_clicked(){
 	QMessageBox::StandardButton res=QMessageBox::question(this,"提示","手动保存数据?");
 	if(res==QMessageBox::No) return;
 	std::cout<<"Info: Write Question List to Dir"<<std::endl;
-    WriteQuestionListToDir();
+	WriteQuestionListToDir();
 }
 void MainWindow::on_quit_pushButton_clicked(){
 	QMessageBox::StandardButton res=QMessageBox::question(this,"提示","不保存修改，直接退出?");
@@ -87,7 +87,7 @@ void MainWindow::on_about_pushButton_clicked(){
 	about->exec();
 }
 void MainWindow::on_view_all_pushButton_clicked(){
-    ViewDialog *view=new ViewDialog("所有题目");
+	ViewDialog *view=new ViewDialog("所有题目");
 	view->setWindowTitle("查看所有题目");
 	view->get_result();
 	view->show();
@@ -109,7 +109,7 @@ void MainWindow::on_tags_search_pushButton_clicked(){
 		QMessageBox::warning(this,"啊哦","你好像没有输入内容呢");
 		return;
 	}
-    QStringList spt=str.split(";");
+	QStringList spt=str.split(";");
 	QStringList ref;
 	for(const QString &i:spt){
 		if(!i.trimmed().isEmpty()) ref.push_back(i.trimmed());

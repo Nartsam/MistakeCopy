@@ -74,18 +74,18 @@ void ViewDialog::AddEvent(){
 	refresh();
 }
 void ViewDialog::on_prev_pushButton_clicked(){
-    current_page--;
-    if(current_page<0) current_page=0;
-    refresh();
+	current_page--;
+	if(current_page<0) current_page=0;
+	refresh();
 }
 void ViewDialog::on_next_pushButton_clicked(){
-    current_page++;
-    if(current_page>=(int)view_index.size()) current_page=view_index.size()-1;
-    refresh();
+	current_page++;
+	if(current_page>=(int)view_index.size()) current_page=view_index.size()-1;
+	refresh();
 }
 void ViewDialog::on_getsim_pushButton_clicked(){
-    ViewDialog *chd_dia=new ViewDialog("\"问题 "+
-				QString::number(view_index[current_page]+1)+"\" 的相似问题");
+	ViewDialog *chd_dia=new ViewDialog("\"问题 "+
+									   QString::number(view_index[current_page]+1)+"\" 的相似问题");
 	chd_dia->setWindowTitle("查找相似问题");
 	chd_dia->get_result(QuestionList[view_index[current_page]]);
 	chd_dia->show();
@@ -97,7 +97,7 @@ void ViewDialog::on_delete_pushButton_clicked(){
 	QMessageBox::information(this,"提示","删除完成");
 }
 void ViewDialog::on_page_lineEdit_editingFinished(){
-    int page=ui->page_lineEdit->text().toInt();
+	int page=ui->page_lineEdit->text().toInt();
 	if(page<1||page>(int)view_index.size()){
 		QMessageBox::critical(this,"错误","页码不存在");
 	}

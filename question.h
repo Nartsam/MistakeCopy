@@ -3,6 +3,7 @@
 
 #include<QString>
 #include<QDate>
+#include<map>
 class Question{
 private:
 	QString text; //题目内容

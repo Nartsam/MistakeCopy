@@ -67,7 +67,7 @@ void AddDialog::on_notes_radioButton_toggled(bool checked){
 }
 void AddDialog::on_buttonBox_accepted(){ //check & save Question
 	((*this).*current_state)(false);
-    this->input.set_tags_by_string(ui->lineEdit->text());
+	this->input.set_tags_by_string(ui->lineEdit->text());
 	if(CheckQuestionValidity(this->input)){
 		QuestionList.push_back(this->input);
 		emit GS.AddSignal();
